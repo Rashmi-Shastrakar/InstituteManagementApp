@@ -1,0 +1,56 @@
+﻿
+@model  List<InstituteManagementApp.Models.Subjects>
+@{
+    ViewBag.Title = "SubjectPage";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <form method="post" name="Display">
+        <h2>Home</h2>
+
+        <br />
+        @{
+
+            <table class="table table-bordered">
+                <thead style="background-color:cadetblue; color:aliceblue">
+                    <tr>
+                        <td>
+                            Subject Id
+                        </td>
+                        <td>
+                            Name
+                        </td>
+
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.SubjectId  </td>
+                        <td>@data.SubjectName </td>
+
+
+                        <td>@Html.ActionLink("Delete", "DeleteSubject", new { SubjectId = data.SubjectId })</td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+        }
+        >
+        @Html.ActionLink("Add new Subject", "AddSubject")
+
+    </form>
+</body>
+</html>
+
+

@@ -1,0 +1,54 @@
+﻿@model  List<InstituteManagementApp.Models.Designation>
+@{
+    ViewBag.Title = "DesignationPage";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <form method="post" name="Display">
+        <h2>Home</h2>
+
+        <br />
+        @{
+
+            <table class="table table-bordered" >
+                <thead style="background-color:cadetblue; color:aliceblue">
+                    <tr>
+                        <td>
+                            Designation ID
+                        </td>
+                        <td>
+                            Designation
+                        </td>
+
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.DesignationId  </td>
+                        <td>@data.DesignationName  </td>
+
+
+                        <td>@Html.ActionLink("Delete", "DeleteDesignation", new { DesignationId = data.DesignationId })</td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+        }
+        >
+        @Html.ActionLink("Add new Designation", "AddDesignation")
+
+    </form>
+</body>
+</html>
+

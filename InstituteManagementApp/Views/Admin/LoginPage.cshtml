@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "LoginPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Loginstyle.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("LoginCredential","Admin",FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-5 col-md-3">
+                    <div class="form-login">
+                        <h4>Admin Login</h4>
+                        @*<input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />*@
+                        @Html.TextBox("txtUserName", null, new { @class = "form-control input-sm chat-input", @placeholder = "UserName" })
+                        <br>
+                        @Html.TextBox("txtPassword", null, new { @class = "form-control input-sm chat-input", @placeholder = "Password", type = "password" })
+                        <br>
+                        <div class="wrapper">
+                            <span class="group-btn">
+                                
+                                <input type="submit" class="btn btn-primary btnsubmit" value="Submit">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+    </body>
+</html>

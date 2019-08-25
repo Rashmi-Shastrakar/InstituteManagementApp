@@ -1,0 +1,18 @@
+﻿body {
+    background-image: url("https://pixabay.com/photos/study-workroom-office-glimpse-789631/");
+}
+.heading {
+    align-content: center;
+    font-family: 'Acme', sans-serif;
+    text-align: center;
+}
+
+.btnsubmit {
+    width: 40%;
+}
+
+.bodypart {
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+        

@@ -1,0 +1,58 @@
+﻿@model  List<InstituteManagementApp.Models.Student>
+@{
+    ViewBag.Title = "StudentPage";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <form method="post" name="Display">
+        <div style="align-content: center; text-align: center">
+            <h1 style="font-weight:bold">Active Student</h1>
+        </div>
+
+        <br />
+        @{
+
+            <table class="table table-bordered table-condensed" style="background-color:white">
+                <thead style="background-color:cornflowerblue; font-weight:bold">
+                    <tr>
+                        <td>Student ID</td>
+                        <td>FirstName</td>
+                        <td>MiddleName</td>
+                        <td>LastName</td>
+                        <td>TotalFees</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td>@data.StudentId  </td>
+                            <td>@data.FirstName  </td>
+                            <td>@data.MiddleName </td>
+                            <td>@data.LastName </td>
+                            <td>@data.TotalFess</td>
+                            <td>@Html.ActionLink("Edit", "EditStudent", new { StudentId = data.StudentId })</td>
+                            <td>@Html.ActionLink("Delete", "DeleteStudent", new { StudentId = data.StudentId })</td>
+                        </tr>
+                    }
+                </tbody>
+               </table>
+            <br />
+        }
+        >
+        @Html.ActionLink("Add new Student", "StudentRegistration")
+
+    </form>
+</body>
+</html>
+

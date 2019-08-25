@@ -1,0 +1,240 @@
+﻿@model InstituteManagementApp.Models.Student
+@using InstituteManagementApp.Models
+
+@{
+    ViewBag.Title = "StudentRegistration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> classes = ViewBag.Classes;
+   
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    
+    <link href="~/Content/StudentRegistration.css" rel="stylesheet" />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+     {
+        @Html.AntiForgeryToken()
+
+        <div class="heading">
+            <h1 style="font-weight:bold;">Student Registration</h1>
+        </div>
+        <div class="bodypart">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form id="contact-form">
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "" })
+                                            <div class="">
+                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+
+                                        @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @*<label for="form_lastname">Lastname *</label>*@
+                                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @*<label>Date of Birth *</label>
+                                            <input type="date" name="dob" class="form-control" placeholder="Please enter your date of Birth *" required="required" data-error="Valid email is required.">*@
+                                        @Html.LabelFor(model => model.DateofBirth, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control" ,type="date"} })
+                                            @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @*<label for="form_phone">Contact 1*</label>
+                                            <input type="tel" name="contact1" class="form-control" placeholder="Please enter your phone 1">*@
+                                        @Html.LabelFor(model => model.Contact.Contact1, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Contact.Contact1, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Contact.Contact1, "", new { @class = "text-danger" })
+                                        </div>
+
+
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @*<label for="form_phone">Contact 2*</label>
+                                            <input name="contact2" class="form-control" placeholder="Please enter your phone 2">*@
+
+                                        @Html.LabelFor(model => model.Contact.Contact2, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Contact.Contact2, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Contact.Contact2, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div>
+                                        @*<label for="form_phone">Gender*</label><br />
+                                            <input type="radio" name="Gender" value="Male" /> Male  <input type="radio" name="Gender" value="Female" /> Female*@
+
+                                        @Html.LabelFor(model => model.StudentGender, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.DropDownListFor(model => model.StudentGender, new List<SelectListItem>
+                                            { new SelectListItem{Text="Male", Value="Male"},
+                                              new  SelectListItem{Text="Female", Value="Female"}}, "-- select --", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.StudentGender, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        @*<label>Address*</label>
+                                            <input class="form-control" type="text" name="address" placeholder="Address" required />*@
+
+                                        @Html.LabelFor(model => model.Address.AddressforContact, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.Address.AddressforContact, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DateofAdmission, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Class, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                        @Html.DropDownListFor(model => model.Class, classes, "-- Select --", new { @class = "form-control" })
+                                        <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        @*<label>Schhol Name*</label>
+                                            <input type="text" name="schoolname" class="form-control" placeholder="Please enter your Schhol Name *" required="required" data-error="Valid School Name is required.">*@
+                                        @Html.LabelFor(model => model.School, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.School, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.School, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        @*<label>Subjects*</label>
+                                        <input type="text" name="subject" class="form-control" placeholder="Subjects *" />*@
+                                        @Html.LabelFor(model => model.Stream, htmlAttributes: new { @class = "" })
+                                        @*<br />
+                                        @for (int i = 0; i < Model.Subject.Count(); i++)
+                                        {
+                                               @Html.CheckBoxFor(model => model.Subject[i].IsSelected)@Model.Subject[i].SubjectName<br>
+                                         }*@
+                                        @Html.DropDownListFor(model => model.Stream, new List<SelectListItem>
+                                        { new SelectListItem{Text="Science", Value="Science"},new SelectListItem{Text="Commerce", Value="Commerce"},
+                                        new  SelectListItem{Text="Arts", Value="Arts"}}, "-- select --", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.School, "", new { @class = "text-danger" })
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        @*<label>Admission Date*</label>
+                                        <input type="date" name="admissiondate" class="form-control" required="required" data-error="Valid Date is required.">*@
+                                        @Html.LabelFor(model => model.DateofAdmission, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.DateofAdmission, new { htmlAttributes = new { @class = "form-control", type="date"} })
+                                            @Html.ValidationMessageFor(model => model.DateofAdmission, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        @*<label>Total Fees*</label>
+                                        <input type="text" name="fees" class="form-control" placeholder="Please enter your Fees *" required="required" data-error="Valid Amount is required.">*@
+                                        @Html.LabelFor(model => model.TotalFess, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.TotalFess, new { htmlAttributes = new { @class = "form-control"} })
+                                            @Html.ValidationMessageFor(model => model.TotalFess, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        
+                                        @Html.LabelFor(model => model.NoofInstallments, htmlAttributes: new { @class = "" })
+                                        <div class="">
+                                            @Html.EditorFor(model => model.NoofInstallments, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.NoofInstallments, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12" style="text-align:center">
+                                    <input type="submit" class="btn btn-success btnsubmit" value="Submit">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     }
+    </body>
+</html>  

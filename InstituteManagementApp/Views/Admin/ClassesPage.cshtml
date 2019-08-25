@@ -1,0 +1,54 @@
+﻿@model   List<InstituteManagementApp.Models.Classes>
+@{
+    ViewBag.Title = "ClassesPage";
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <form method="post" name="Display">
+        <h2>Home</h2>
+
+        <br />
+        @{
+
+            <table class="table table-bordered" >
+                <thead style="background-color:cadetblue; color:aliceblue">
+                    <tr>
+                        <td>
+                            Class ID
+                        </td>
+                        <td>
+                            Class Name
+                        </td>
+                        
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.ClassId  </td>
+                        <td>@data.Class  </td>
+
+                        
+                        <td>@Html.ActionLink("Delete", "DeleteClass", new { ClassId = data.ClassId })</td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+        }
+        >
+        @Html.ActionLink("Add new Class", "AddClass")
+
+    </form>
+</body>
+</html>
+

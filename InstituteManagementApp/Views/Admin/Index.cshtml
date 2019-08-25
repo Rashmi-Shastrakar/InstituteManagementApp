@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:20%; margin-top:3%;">
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">
+                Registration >
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="w3-dropdown-content w3-bar-block">
+                @Html.ActionLink("Student Registration", "StudentRegistration", "Student")<br />
+                @Html.ActionLink("User Registration", "UserRegistration", "User")
+
+            </div>
+        </div>
+        <div class="w3-bar-item w3-button">@Html.ActionLink("Classes", "ClassesPage", "Admin")</div>
+        <div class="w3-bar-item w3-button">@Html.ActionLink("Subjects", "SubjectPage", "Admin")</div>
+        <div class="w3-bar-item w3-button">@Html.ActionLink("Designation", "DesignationPage", "Admin")</div>
+        <div class="w3-bar-item w3-button">@Html.ActionLink("Students Details", "StudentPage", "Student")</div>
+        <div class="w3-bar-item w3-button">@Html.ActionLink("User Details", "AllUsers", "User")</div>
+    </div>
+
+
+
+
+</body>
+</html>
